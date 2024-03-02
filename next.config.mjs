@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: false,
+  images: {
+    domains: ["images-ssl.gotinder.com"],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
