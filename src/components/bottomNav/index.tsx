@@ -17,7 +17,7 @@ export default function BottomNav() {
     router.push(NavNames[nameName])
   }
   return (
-    <div className="w-screen  absolute bottom-0  bg-white">
+    <div className="w-screen  fixed bottom-0  bg-white">
       <ul className=" flex items-center justify-around z-10 py-6">
         <div onClick={() => handleClick("recs")}>
           <FaFire size={25} color={navStore.nav === "recs" ? "red" : "gray"} />
