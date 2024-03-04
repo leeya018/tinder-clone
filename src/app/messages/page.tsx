@@ -5,14 +5,20 @@ import BottomNav from "@/components/bottomNav"
 import TopNav from "@/components/topNav"
 import MatchesStore from "@/mobx/matchesStore"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 const MessagesPage = observer(() => {
   const { matchesNoMsg, matchesWithMsg } = MatchesStore
+  const router = useRouter()
+
+  const handleMessageClick = (id: string) => {
+    router.push(`/messages/${id}`)
+  }
   return (
     <div className="max-h-screen max- w-screen relative ">
       <TopNav />
       <div className=" my-10 relative">
-        <div className=" font-bold mb-2 ">New matches</div>
+        <div className=" font-bold ml-2  mb-2 ">New matches</div>
         {/* matches cards */}
         <ul className="flex items-center gap-2">
           {matchesNoMsg.slice(0, 4).map((match, key) => (
@@ -28,10 +34,14 @@ const MessagesPage = observer(() => {
             </li>
           ))}
         </ul>
-        <div className=" font-bold mt-2 mb-2 ">Messages</div>
+        <div className=" font-bold ml-2  mt-2 mb-2 ">Messages</div>
         <ul>
           {matchesWithMsg.map((match, key) => (
-            <li key={key} className="border-y-2 py-2 ">
+            <li
+              key={key}
+              className="border-y-2 py-2 "
+              onClick={() => handleMessageClick(match.id)}
+            >
               <div className="flex items-center ">
                 <Image
                   alt="profile image"
